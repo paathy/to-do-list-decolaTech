@@ -24,6 +24,9 @@ public class Tarefa {
       this.nome = nome;
       this.descricao = descricao;
       this.status = status;
+
+
+
     }
 
     public Long getId(){
