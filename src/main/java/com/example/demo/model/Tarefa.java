@@ -14,18 +14,16 @@ public class Tarefa {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-
     private String nome;
     private String descricao;
     private Boolean status;
 
     public Tarefa(){}
 
-    public Tarefa(String nome, String descricao){
+    public Tarefa(String nome, String descricao, Boolean status){
       this.nome = nome;
       this.descricao = descricao;
-      this.status = false;
+      this.status = status;
     }
 
     public Long getId(){
