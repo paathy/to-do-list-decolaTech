@@ -26,4 +26,8 @@ public class TarefaService {
     public Tarefa salvarTarefa(Tarefa tarefa){
         return  tarefaRepository.save(tarefa);
     }
+
+    public void deletarTarefa(Long id){
+        tarefaRepository.deleteById(id);
+    }
 }

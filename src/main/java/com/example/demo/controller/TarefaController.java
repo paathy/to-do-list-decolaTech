@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.Tarefa;
 import com.example.demo.service.TarefaService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,5 +38,11 @@ public class TarefaController {
     @PostMapping
     public Tarefa criarTarefa(@RequestBody Tarefa tarefa){
         return tarefaService.salvarTarefa(tarefa);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Tarefa> deletarTarefa(@PathVariable Long id){
+        tarefaService.deletarTarefa(id);
+        return ResponseEntity.noContent().build();
     }
 }
