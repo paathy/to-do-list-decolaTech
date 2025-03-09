@@ -30,4 +30,37 @@ public class TarefaService {
     public void deletarTarefa(Long id){
         tarefaRepository.deleteById(id);
     }
+
+    public Optional<Tarefa> alterarTarefa(Long id, Tarefa tarefa){
+
+        Optional<Tarefa> tarefaEncontrada = tarefaRepository.findById(id);
+
+        Tarefa tarefaAtualizada = tarefaEncontrada.get();
+        tarefaAtualizada.setNome(tarefa.getNome());
+        tarefaAtualizada.setDescricao(tarefa.getDescricao());
+        tarefaAtualizada.setStatus(tarefa.getStatus());
+
+        tarefaRepository.save(tarefaAtualizada);
+
+        return tarefaRepository.findById(id);
+
+    }
+
+    public Optional<Tarefa> alterarStatus(Long id){
+
+        Optional<Tarefa> tarefaEncontrada = tarefaRepository.findById(id);
+
+        Tarefa tarefa = tarefaEncontrada.get();
+
+        if (tarefa.getStatus() == true){
+            tarefa.setStatus(false);
+        }else {
+            tarefa.setStatus(true);
+        }
+
+        tarefaRepository.save(tarefa);
+
+        return tarefaRepository.findById(id);
+
+    }
 }
